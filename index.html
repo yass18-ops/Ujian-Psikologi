@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Aplikasi Ujian Psikologi Pelajar | Student Psychological Assessment App</title>
+
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Aplikasi Ujian Psikologi interaktif untuk pelajar sekolah dan IPT. Lengkap dengan 8 ujian psikometrik standard termasuk DASS-21, MBTI, VARK, BDI, Saringan Minda Sihat, Gaya Bercinta, Pengurusan Masa, dan 5 Love Languages.">
+  <meta name="keywords" content="ujian psikologi, DASS-21, MBTI, VARK, BDI, minda sihat, gaya bercinta, pengurusan masa, love languages">
+
+  <!-- Stylesheets & Fonts -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Top Application Header -->
+  <header class="app-header">
+    <div class="container header-content">
+      <div class="logo-group">
+        <div class="logo-icon"><i class="fa-solid fa-brain"></i></div>
+        <span class="logo-title">Ujian Psikologi Pelajar</span>
+      </div>
+      <div class="header-actions">
+        <span id="header-student-tag" class="test-lang-tag"><i class="fa-solid fa-graduation-cap"></i> Portal Pelajar</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Container -->
+  <main class="container">
+
+    <!-- SCREEN 1: HOME SCREEN -->
+    <section id="home-screen">
+      <!-- Hero Banner -->
+      <div class="hero-banner glass-panel">
+        <h1 class="hero-title">Pusat Ujian Psikologi & Kendiri Pelajar</h1>
+        <p class="hero-subtitle">
+          Pilih ujian psikometri standard di bawah untuk mengenalpasti tahap kesihatan mental, gaya personaliti, gaya pembelajaran, dan pengurusan masa anda.
+        </p>
+      </div>
+
+      <!-- Search & Filter Bar -->
+      <div class="controls-wrapper">
+        <div class="search-box">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" id="search-input" class="search-field" placeholder="Cari nama ujian (contoh: DASS, MBTI, VARK, Minda Sihat)...">
+        </div>
+
+        <div class="filter-pills">
+          <button class="filter-pill active" data-category="all">Semua Ujian (8)</button>
+          <button class="filter-pill" data-category="Mental Health">Kesihatan Mental (3)</button>
+          <button class="filter-pill" data-category="Personality & Relationships">Personaliti & Hubungan (3)</button>
+          <button class="filter-pill" data-category="Academic & Life Skills">Akademik & Kemahiran (2)</button>
+        </div>
+      </div>
+
+      <!-- Test Cards Grid -->
+      <div id="tests-grid" class="tests-grid">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+
+      <!-- Test History Section -->
+      <div id="history-container" class="history-section hidden">
+        <h3 class="section-title"><i class="fa-solid fa-clock-rotate-left"></i> Rekod Ujian Terdahulu</h3>
+        <div id="history-list" class="history-list">
+          <!-- Rendered dynamically -->
+        </div>
+      </div>
+    </section>
+
+    <!-- SCREEN 2: ACTIVE TEST TAKING SCREEN -->
+    <section id="test-screen" class="hidden">
+      <div class="test-taking-wrapper">
+        
+        <!-- Top Bar Navigation & Timer -->
+        <div class="test-top-bar">
+          <button id="btn-back-home" class="btn-icon-back" title="Kembali ke Laman Utama">
+            <i class="fa-solid fa-arrow-left"></i>
+          </button>
+          <h2 id="test-title-header" class="text-xl font-bold">Tajuk Ujian</h2>
+          <div class="test-timer-badge">
+            <i class="fa-regular fa-clock"></i> <span id="test-timer">00:00</span>
+          </div>
+        </div>
+
+        <!-- Instructions Banner -->
+        <div id="test-instructions-box" class="glass-panel" style="padding: 1rem 1.25rem; margin-bottom: 1.25rem;">
+          <p id="test-instructions" style="font-size: 0.9rem; color: var(--text-muted);"></p>
+        </div>
+
+        <!-- Animated Progress Bar -->
+        <div class="progress-container">
+          <div class="progress-info">
+            <span id="test-progress-text">Soalan 1 daripada 21</span>
+          </div>
+          <div class="progress-track">
+            <div id="test-progress-fill" class="progress-fill" style="width: 5%;"></div>
+          </div>
+        </div>
+
+        <!-- Question Card -->
+        <div id="question-card" class="question-card glass-panel">
+          <div id="question-card-body">
+            <!-- Dynamic Question Content -->
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Mobile Sticky Bottom Navigation -->
+      <div class="sticky-bottom-nav">
+        <div class="nav-buttons-group">
+          <button id="btn-prev-q" class="btn-nav btn-nav-secondary" disabled>
+            <i class="fa-solid fa-chevron-left"></i> Undur
+          </button>
+          <button id="btn-next-q" class="btn-nav btn-nav-primary">
+            Seterusnya <i class="fa-solid fa-chevron-right"></i>
+          </button>
+          <button id="btn-submit-test" class="btn-nav btn-nav-primary hidden" style="background: linear-gradient(135deg, #10b981, #059669);">
+            <i class="fa-solid fa-check-double"></i> Hantar Ujian
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCREEN 3: RESULTS DASHBOARD -->
+    <section id="result-screen" class="hidden">
+      <div class="result-wrapper">
+        <div class="result-card glass-panel">
+          
+          <div id="result-badge" class="result-header-badge">Status Keputusan</div>
+          <h2 id="result-test-name" class="result-main-title">Keputusan Ujian</h2>
+
+          <div id="result-summary-box" class="result-summary-box">
+            <p id="result-summary-text">Ringkasan skor anda...</p>
+          </div>
+
+          <p id="result-desc-text" style="color: var(--text-muted); max-width: 650px; margin: 0 auto 1.5rem auto;"></p>
+
+          <!-- SVG Charts & Subscales Container -->
+          <div id="result-subscales-container" class="result-subscales-wrapper">
+            <!-- Rendered by ChartsEngine -->
+          </div>
+
+        </div>
+
+        <!-- Result Actions Bar -->
+        <div class="result-actions">
+          <button id="btn-retake" class="btn-result-action btn-nav-secondary">
+            <i class="fa-solid fa-rotate-right"></i> Ambil Ujian Semula
+          </button>
+          <button id="btn-print-report" class="btn-result-action btn-nav-primary">
+            <i class="fa-solid fa-print"></i> Cetak / Muat Turun Laporan
+          </button>
+          <button id="btn-home-result" class="btn-result-action btn-nav-secondary">
+            <i class="fa-solid fa-house"></i> Laman Utama
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Application Scripts -->
+  <script src="js/testsData.js"></script>
+  <script src="js/charts.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+</html>
