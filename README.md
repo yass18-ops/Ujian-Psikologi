@@ -38,9 +38,18 @@ A modern, interactive, mobile-first web application designed for school and univ
 
 ## 🚀 Getting Started
 
-Simply open `index.html` in any web browser, or run a local static server:
+### Option 1: Using Node.js (Recommended)
+```bash
+npm run dev
+```
+Then visit `http://localhost:3000` in your web browser.
 
+### Option 2: Using Python
 ```bash
 python -m http.server 8080
 ```
 Then visit `http://localhost:8080` in your web browser.
+
+### Option 3: Direct Browser Access
+Simply open `index.html` directly in any modern web browser.
+

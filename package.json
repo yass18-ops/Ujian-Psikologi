@@ -1,0 +1,23 @@
+{
+  "name": "ujian-psikologi-pelajar",
+  "version": "1.0.0",
+  "description": "Aplikasi Ujian Psikologi Pelajar - 8 Ujian Psikometrik Standard",
+  "main": "index.html",
+  "scripts": {
+    "dev": "node server.js",
+    "start": "node server.js",
+    "serve": "npx --yes serve ."
+  },
+  "keywords": [
+    "ujian-psikologi",
+    "psikometrik",
+    "dass-21",
+    "mbti",
+    "vark",
+    "bdi-malay",
+    "minda-sihat",
+    "love-languages"
+  ],
+  "author": "Bahagian Psikologi & Kaunseling USIM",
+  "license": "MIT"
+}
